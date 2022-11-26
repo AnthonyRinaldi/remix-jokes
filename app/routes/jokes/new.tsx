@@ -5,16 +5,25 @@ export default function NewJokeRoute() {
       <form method="post">
         <div>
           <label>
-            Name: <input type="text" name="name" />
+            {"Name: "}
+            <input
+              className="border-2 border-gray rounded"
+              type="text"
+              name="name"
+            />
           </label>
         </div>
         <div>
           <label>
-            Content: <textarea name="content" />
+            {"Content: "}
+            <textarea className="border-2 border-gray rounded" name="content" />
           </label>
         </div>
-        <div>
-          <button type="submit" className="button">
+        <div className="mt-5">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+            type="submit"
+          >
             Add
           </button>
         </div>
