@@ -28,7 +28,7 @@ export default function JokesRoute() {
   const data = useLoaderData<LoaderData>();
 
   return (
-    <div className="md:container bg-white rounded-lg md:m-10 mx-auto p-10">
+    <div className="md:container bg-white rounded-lg md:m-10 p-10">
       <header>
         <h1 className="text-3xl pb-5">J🤪KES</h1>
         {data.user ? (
