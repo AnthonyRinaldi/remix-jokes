@@ -13,7 +13,7 @@ export default function App() {
         <title>Remix: So great, it's funny!</title>
         <Links />
       </head>
-      <body className="bg-slate-300 p-10">
+      <body className="bg-slate-300">
         <Outlet />
         <LiveReload />
       </body>

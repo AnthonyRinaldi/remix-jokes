@@ -1,21 +1,25 @@
 import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import { json, LoaderFunction } from "@remix-run/node";
 
-import { Joke } from "@prisma/client";
-
 import { db } from "~/utils/db.server";
+import { getUser } from "~/utils/session.server";
 
 type LoaderData = {
+  user: Awaited<ReturnType<typeof getUser>>;
   jokeListItems: Array<{ id: string; name: string }>;
 };
 
-export const loader: LoaderFunction = async () => {
+export const loader: LoaderFunction = async ({ request }) => {
+  const user = await getUser(request);
+  const jokeListItems = await db.joke.findMany({
+    take: 5,
+    orderBy: { createdAt: "desc" },
+    select: { id: true, name: true },
+  });
+
   const data: LoaderData = {
-    jokeListItems: await db.joke.findMany({
-      take: 5,
-      select: { id: true, name: true },
-      orderBy: { createdAt: "desc" },
-    }),
+    jokeListItems,
+    user,
   };
   return json(data);
 };
@@ -24,8 +28,22 @@ export default function JokesRoute() {
   const data = useLoaderData<LoaderData>();
 
   return (
-    <div className="container bg-white rounded-lg p-10">
-      <h1 className="text-3xl pb-5">J🤪KES</h1>
+    <div className="md:container bg-white rounded-lg md:m-10 mx-auto p-10">
+      <header>
+        <h1 className="text-3xl pb-5">J🤪KES</h1>
+        {data.user ? (
+          <div className="user-info">
+            <span>{`Hi ${data.user.username}`}</span>
+            <form action="/logout" method="post">
+              <button type="submit" className="button">
+                Logout
+              </button>
+            </form>
+          </div>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
+      </header>
       <main>
         <div className="flex flex-row">
           <div className="basis-1/3">
