@@ -16,6 +16,8 @@ This starts your app in development mode, rebuilding assets on file changes.
 
 ## Deployment
 
+Zeroth, add SESSION_SECRET to .env file
+
 First, build your app for production:
 
 ```sh
