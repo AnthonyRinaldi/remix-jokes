@@ -27,22 +27,24 @@ export default function JokesRoute() {
     <div className="container bg-white rounded-lg p-10">
       <h1 className="text-3xl pb-5">J🤪KES</h1>
       <main>
-        <div>
-          <div>
-            <Link to=".">Get a random joke</Link>
+        <div className="flex flex-row">
+          <div className="basis-1/3">
+            <Link to="." className="text-orange-600">
+              Get a random joke
+            </Link>
             <p>Here are a few more jokes to check out:</p>
-            <ul>
+            <ul className="list-disc">
               {data.jokeListItems.map((joke) => (
                 <li key={joke.id}>
                   <Link to={joke.id}>{joke.name}</Link>
                 </li>
               ))}
             </ul>
-            <Link to="new" className="button">
+            <Link to="new" className="text-orange-600">
               Add your own
             </Link>
           </div>
-          <div className="jokes-outlet">
+          <div className="basis-2/3">
             <Outlet />
           </div>
         </div>
