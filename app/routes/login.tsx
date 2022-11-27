@@ -110,8 +110,8 @@ export default function Login() {
   const [searchParams] = useSearchParams();
 
   return (
-    <div className="md:container md:mx-auto bg-white rounded-lg p-5">
-      <div className="">
+    <div className="md:container md:mx-auto md:my-10 bg-white rounded-lg p-10">
+      <div className="text-center">
         <h1 className="text-4xl pb5">Login</h1>
         <form method="post">
           <input

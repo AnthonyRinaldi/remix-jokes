@@ -19,7 +19,7 @@ function Document({
         <title>{title}</title>
         <Links />
       </head>
-      <body>
+      <body className="bg-gradient-to-r from-indigo-800 to-violet-500">
         {children}
         <LiveReload />
       </body>
@@ -40,7 +40,7 @@ export function CatchBoundary() {
 
   return (
     <Document title={`${caught.status} ${caught.statusText}`}>
-      <div className="error-container">
+      <div className="md:container">
         <h1>
           {caught.status} {caught.statusText}
         </h1>

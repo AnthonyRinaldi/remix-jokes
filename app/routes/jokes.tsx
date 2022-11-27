@@ -25,23 +25,27 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export default function JokesRoute() {
+  const buttonClass =
+    "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg";
   const data = useLoaderData<LoaderData>();
 
   return (
-    <div className="md:container bg-white rounded-lg md:m-10 p-10">
-      <header>
+    <div className="md:container md:mx-auto md:my-10 bg-white md:rounded-lg p-10">
+      <header className="flex justify-between">
         <h1 className="text-3xl pb-5">J🤪KES</h1>
         {data.user ? (
-          <div className="user-info">
-            <span>{`Hi ${data.user.username}`}</span>
+          <div className="flex items-center">
+            <div className="pr-3">{`Hi ${data.user.username}`}</div>
             <form action="/logout" method="post">
-              <button type="submit" className="button">
+              <button className={buttonClass} type="submit">
                 Logout
               </button>
             </form>
           </div>
         ) : (
-          <Link to="/login">Login</Link>
+          <Link className={buttonClass} to="/login">
+            Login
+          </Link>
         )}
       </header>
       <main>
