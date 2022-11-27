@@ -29,10 +29,15 @@ export default function JokesIndexRoute() {
   const data = useLoaderData<LoaderData>();
 
   return (
-    <div>
+    <div className="flex flex-col h-full">
       <p>Here's a random joke:</p>
-      <p>{data.randomJoke.content}</p>
-      <Link to={data.randomJoke.id}>"{data.randomJoke.name}" Permalink</Link>
+      <p className="grow">{data.randomJoke.content}</p>
+      <Link
+        className="underline text-orange-600 hover:text-orange-400"
+        to={data.randomJoke.id}
+      >
+        "{data.randomJoke.name}" Permalink
+      </Link>
     </div>
   );
 }

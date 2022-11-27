@@ -6,6 +6,7 @@ import {
   redirect,
 } from "@remix-run/node";
 import { Link, useCatch, useLoaderData, useParams } from "@remix-run/react";
+import Button from "~/components/Button";
 import { db } from "~/utils/db.server";
 import { getUserId, requireUserId } from "~/utils/session.server";
 
@@ -54,16 +55,16 @@ export default function JokeRoute() {
   const data = useLoaderData<LoaderData>();
 
   return (
-    <div>
+    <div className="flex flex-col h-full">
       <h2>Here's your selected joke:</h2>
-      <p>{data.joke.content}</p>
-      <Link to=".">{data.joke.name} Permalink</Link>
+      <p className="grow">{data.joke.content}</p>
+      <Link className="underline text-orange-600 hover:text-orange-400" to=".">
+        {data.joke.name} Permalink
+      </Link>
       {data.isOwner ? (
         <form method="post">
           <input type="hidden" name="_method" value="delete" />
-          <button type="submit" className="button">
-            Delete
-          </button>
+          <Button type="submit">Delete</Button>
         </form>
       ) : null}
     </div>

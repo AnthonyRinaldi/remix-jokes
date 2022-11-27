@@ -5,6 +5,7 @@ import {
   redirect,
 } from "@remix-run/node";
 import { Link, useActionData, useCatch } from "@remix-run/react";
+import Button from "~/components/Button";
 
 import { db } from "~/utils/db.server";
 import { getUserId, requireUserId } from "~/utils/session.server";
@@ -124,12 +125,7 @@ export default function NewJokeRoute() {
               {actionData.formError}
             </p>
           ) : null}
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
-            type="submit"
-          >
-            Add
-          </button>
+          <Button type="submit">Add</Button>
         </div>
       </form>
     </div>
@@ -141,7 +137,7 @@ export function CatchBoundary() {
 
   if (caught.status === 401) {
     return (
-      <div className="error-container">
+      <div className="md:container md:rounded md:mx-auto my-10 text-center md:shadow-lg p-10 bg-white border-red-500">
         <p>You must be logged in to create a joke.</p>
         <Link to="/login">Login</Link>
       </div>
@@ -151,7 +147,7 @@ export function CatchBoundary() {
 
 export function ErrorBoundary() {
   return (
-    <div className="error-container">
+    <div className="md:container md:rounded md:mx-auto my-10 text-center md:shadow-lg p-10 bg-white border-red-500">
       Something unexpected went wrong. Sorry about that.
     </div>
   );

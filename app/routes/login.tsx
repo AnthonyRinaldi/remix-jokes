@@ -1,5 +1,6 @@
 import { ActionFunction, json } from "@remix-run/node";
 import { Link, useActionData, useSearchParams } from "@remix-run/react";
+import Button from "~/components/Button";
 
 import { db } from "~/utils/db.server";
 import { login, register, createUserSession } from "~/utils/session.server";
@@ -190,21 +191,26 @@ export default function Login() {
               </p>
             ) : null}
           </div>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
-            type="submit"
-          >
-            Submit
-          </button>
+          <Button type="submit">Submit</Button>
         </form>
       </div>
       <div>
         <ul className="list-none">
           <li>
-            <Link to="/">Home</Link>
+            <Link
+              className="underline text-orange-600 hover:text-orange-400"
+              to="/"
+            >
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/jokes">Jokes</Link>
+            <Link
+              className="underline text-orange-600 hover:text-orange-400"
+              to="/jokes"
+            >
+              Jokes
+            </Link>
           </li>
         </ul>
       </div>

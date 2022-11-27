@@ -3,6 +3,7 @@ import { json, LoaderFunction } from "@remix-run/node";
 
 import { db } from "~/utils/db.server";
 import { getUser } from "~/utils/session.server";
+import Button from "~/components/Button";
 
 type LoaderData = {
   user: Awaited<ReturnType<typeof getUser>>;
@@ -37,9 +38,7 @@ export default function JokesRoute() {
           <div className="flex items-center">
             <div className="pr-3">{`Hi ${data.user.username}`}</div>
             <form action="/logout" method="post">
-              <button className={buttonClass} type="submit">
-                Logout
-              </button>
+              <Button type="submit">Logout</Button>
             </form>
           </div>
         ) : (
@@ -51,7 +50,10 @@ export default function JokesRoute() {
       <main>
         <div className="flex flex-row">
           <div className="basis-1/3">
-            <Link to="." className="text-orange-600">
+            <Link
+              to="."
+              className="underline text-orange-600 hover:text-orange-400"
+            >
               Get a random joke
             </Link>
             <p>Here are a few more jokes to check out:</p>
@@ -62,7 +64,10 @@ export default function JokesRoute() {
                 </li>
               ))}
             </ul>
-            <Link to="new" className="text-orange-600">
+            <Link
+              to="new"
+              className="underline text-orange-600 hover:text-orange-400"
+            >
               Add your own
             </Link>
           </div>

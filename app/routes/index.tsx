@@ -1,7 +1,9 @@
 import { Link } from "@remix-run/react";
 
 export default function IndexRoute() {
+  // My guess is this is a anti-pattern?
   const linkClasses = "underline text-orange-600 hover:text-orange-400";
+
   return (
     <div className="md:container md:rounded md:mx-auto md:my-10 text-center md:shadow-lg p-10 bg-white">
       <h1 className="text-3xl pb-5">Remix Jokes</h1>
